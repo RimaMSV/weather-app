@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="section-search">
+      <div class="search-box">
+        <i class='bx bxs-map'></i>
+        <input type="text" placeholder="Enter your location">
+        <button class="bx bx-search"></button>
+      </div>
+    </div>
+
+    <div class="section-weather">
+      <div class="clock flex">
+        <p>13:20</p>
+      </div>
+
+      <div class="weather-info">
+
+        <div class="current-temp-info">
+          <p class="temperature flex"><span>&deg;</span></p>
+          <img class="current-weather-img" src="./icons/drizzle.png">
+          <p class="description">Rain</p>
+
+          <p class="feels-like info">Feels Like <span>
+              7&deg;</span></p>
+        </div>
+
+        <div class="weather-more-info">
+          <div class="group-info humidity">
+            <img class="label" src="./icons/humidity.png" alt="humidity icon">
+            <div class="info"><span>53</span>%</div>
+          </div>
+          <div class="group-info">
+            <img class="label" src="./icons/thermometer.png" alt="thermometer icon">
+            <div class="info"><span class="max-temp temp-text">7&deg;</span> / <span
+                class="min-temp temp-text">2&deg;</span>
+            </div>
+          </div>
+          <div class="group-info">
+            <img class="label" src="./icons/wind-speed.png" alt="wind speed icon">
+            <div class="info"><span>0</span>m/s</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-days-section">
+        <div class="days-row">
+          <ul class="week-days-info">
+
+            <!-- <li class="week-days">
+              <p class="day">Monday</p>
+              <div class="group-day-info">
+                <img class="label" src="./icons/clear.png">
+                <div class="week-info"><span class="max-temp">8&deg; </span> / <span class="min-temp">0&deg; </span>
+                </div>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="not-found">
+      <img class="error-img" src="./icons/no-result2-white.png" alt="not found result img" />
+      <p class="first-error-msg">Oops! location not found!</p>
+      <p class="second-error-msg">Please try again!</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html {
+  font-family: 'Inter', sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  /* font-family: 'Inter', sans-serif; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: slateblue;
+  color: #111;
+}
+
+.wrapper {
+  width: 42.6rem;
+  height: 67rem;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 0.5px solid #ddd;
+  backdrop-filter: blur(40px);
+
+  position: relative;
+}
+
+
+.search-box {
+  width: 100%;
+  height: 4.8rem;
+  /* background: rgb(104, 103, 103); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.search-box i {
+  position: absolute;
+  left: 1rem;
+  font-size: 2.6rem;
+  color: #fff;
+}
+
+.search-box input {
+  width: 100%;
+  height: 100%;
+  font-size: 1.8rem;
+  /* font-family: 'Inter', sans-serif; */
+  font-weight: 500;
+  background: transparent;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 1rem;
+  color: #fff;
+  text-transform: capitalize;
+  padding: 0 4.8rem 0 4.2rem;
+
+  position: absolute;
+}
+
+.search-box input::placeholder {
+  color: #ffffffc2;
+  text-transform: capitalize;
+}
+
+.search-box button {
+  position: absolute;
+  right: 0;
+  width: 4rem;
+  height: 100%;
+  font-size: 2.6rem;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0 4rem 0 0.5rem;
+}
+
+.section-weather,
+.week-days-section,
+.not-found {
+  visibility: hidden;
+}
+
+.section-weather.active,
+.week-days-section.active,
+.not-found.active {
+  visibility: visible;
+}
+
+/* .not-found {
+  visibility: hidden;
+} */
+
+.section-weather {
+  position: relative;
+}
+
+.clock {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-top: 1.8rem;
+}
+
+.weather-info {
+  margin-bottom: 3.2rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.current-temp-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.temperature {
+  font-size: 5.7rem;
+  font-weight: 400;
+}
+
+.temperature>span {
+  font-size: 4rem;
+  font-weight: 300;
+}
+
+.current-weather-img {
+  width: 22%;
+  margin: 0.8rem 0;
+}
+
+.description {
+  font-size: 1.7rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.feels-like {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+}
+
+.feels-like-temp {
+  font-size: 1.2rem;
+  text-align: center;
+  justify-items: center;
+}
+
+.secondary-label {
+  width: 1.8rem;
+}
+
+.weather-more-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  width: 2.3rem;
+}
+
+
+.info {
+  font-size: 1.3rem;
+  margin-top: 1.3rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.temp-text {
+  font-size: 1.2rem;
+}
+
+.weather-more-info {
+  margin: 1.6rem 0;
+}
+
+.group-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 4.2rem;
+}
+
+.weather-more-info .group-info:not(:last-child) {
+  border-right: 1px solid #333;
+}
+
+.weather-more-info:last-child {
+  border: none;
+}
+
+.days-row {
+  padding: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.week-days-info {
+  list-style: none;
+  color: #fff;
+  width: 100%;
+  height: 15.8rem;
+  /* overflow-y: scroll; */
+  position: relative;
+  padding: 0 0.8rem;
+}
+
+/* .week-days-info::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.week-days-info::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+
+.week-days-info::-webkit-scrollbar-thumb {
+  background: linear-gradient(#a9c9ff, #ffbbec);
+  border-radius: 9px;
+} */
+
+.week-days {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  background: rgba(255, 0, 0, 0.425);
+  padding: 0.9rem 1.3rem;
+  border-radius: 7px;
+
+}
+
+.day {
+  font-size: 1.4rem;
+  letter-spacing: 0.3px;
+}
+
+.group-day-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+
+
+.not-found {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 17.5rem;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.error-img {
+  width: 65%;
+  color: #fff;
+}
+
+.not-found .first-error-msg {
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: 500;
+  margin-top: 2.5rem;
+}
+
+.not-found .second-error-msg {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #fff;
+  margin-top: 1.5rem;
+}
+
+/* Helper classes */
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
