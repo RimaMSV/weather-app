@@ -1,12 +1,17 @@
-const wrapperEl = document.querySelector('.wrapper');
+const containerEl = document.querySelector('.container');
+const welcomePageEl = document.querySelector('.welcome-page');
+const weatherSectionEl = document.querySelector('.section-weather');
 const searchEl = document.querySelector('.search-box button');
+const searchPlaceholder = document.querySelector('.search-box input');
 const currentTempInfo = document.querySelector('.current-temp-info');
 const weatherMoreInfoEl = document.querySelector('.weather-more-info');
 const weekDaysSectionEl = document.querySelector('.week-days-section');
 const weekDaysInfoEl = document.querySelector('.week-days-info');
-const errorMsgEl = document.querySelector('.not-found');
+const error404 = document.querySelector('.not-found');
 
 const apiKey = `ea70cf29c6b6294b6dfd0074ac0a9770`;
+
+
 
 async function getCurrentWeather(city) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
@@ -16,6 +21,19 @@ async function getCurrentWeather(city) {
   const data = await response.json();
   console.log(data);
 
+  if (data.cod == '404') {
+    containerEl.style.height = '49.5rem';
+    welcomePageEl.classList.remove('active');
+    weatherSectionEl.classList.remove('active');
+    error404.classList.add('active');
+
+  } else {
+    containerEl.style.height = '66.4rem';
+    welcomePageEl.classList.remove('active');
+    error404.classList.remove('active');
+    weatherSectionEl.classList.add('active');
+  }
+
   return data;
 }
 
@@ -23,7 +41,7 @@ function parseCurrentWeather(data) {
   let currentTemp = Math.round(data.main.temp);
   let currentWeatherCondition = data.weather[0].main;
   let currentweatherConditionCode = data.weather[0].icon;
-  weatherCondition = currentWeatherCondition.toLowerCase();
+  currentWeatherCondition = currentWeatherCondition.toLowerCase();
   let weatherDescription = data.weather[0].description;
   let feelsLike = Math.round(data.main.feels_like);
   let humidity = data.main.humidity;
@@ -79,7 +97,7 @@ function parseWeeklyWeather(data) {
   const uniqueDayNum = [];
   let dayText = '';
   let today = new Date().getUTCDay();
-  let dayInfo = ""
+  weekDaysInfoEl.innerHTML = '';
   data.list.map((item) => {
     let dayNum = new Date(item.dt_txt).getUTCDay();
     if (!uniqueDayNum.includes(dayNum) && dayNum !== today) {
@@ -128,6 +146,7 @@ function parseWeeklyWeather(data) {
       } else {
         currentWeatherCondition;
       }
+
       weekDaysInfoEl.innerHTML += `<li class="week-days">
       <p class="day">${dayText}</p>
       <div class="group-day-info">
@@ -151,10 +170,9 @@ async function checkWeather() {
 
 }
 
-
-
-
 searchEl.addEventListener('click', () => {
   checkWeather();
-  // checkWeeklyWeatherCondotion();
 })
+
+
+welcomePageEl.classList.add('active')

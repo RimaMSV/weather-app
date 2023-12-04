@@ -8,6 +8,13 @@
 
   <link rel="stylesheet" href="style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Poppins:wght@400;500&family=Recursive:wght@400;500;600&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Rubik:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,53 +23,54 @@
 
 <body>
   <div class="wrapper">
-    <div class="section-search">
-      <div class="search-box">
-        <i class='bx bxs-map'></i>
-        <input type="text" placeholder="Enter your location">
-        <button class="bx bx-search"></button>
-      </div>
-    </div>
+    <div class="container">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
 
-    <div class="section-weather">
-      <div class="clock flex">
-        <p>13:20</p>
-      </div>
-
-      <div class="weather-info">
-
-        <div class="current-temp-info">
-          <p class="temperature flex"><span>&deg;</span></p>
-          <img class="current-weather-img" src="./icons/drizzle.png">
-          <p class="description">Rain</p>
-
-          <p class="feels-like info">Feels Like <span>
-              7&deg;</span></p>
+      <div class="section-search">
+        <div class="search-box">
+          <i class='bx bxs-map'></i>
+          <input type="text" placeholder="Enter your location">
+          <button class="bx bx-search"></button>
         </div>
+      </div>
+      <div class="section-main">
+        <div class="section-weather">
 
-        <div class="weather-more-info">
-          <div class="group-info humidity">
-            <img class="label" src="./icons/humidity.png" alt="humidity icon">
-            <div class="info"><span>53</span>%</div>
-          </div>
-          <div class="group-info">
-            <img class="label" src="./icons/thermometer.png" alt="thermometer icon">
-            <div class="info"><span class="max-temp temp-text">7&deg;</span> / <span
-                class="min-temp temp-text">2&deg;</span>
+          <div class="weather-info">
+
+            <div class="current-temp-info">
+              <p class="temperature flex"><span>&deg;</span></p>
+              <img class="current-weather-img" src="./icons/drizzle.png">
+              <p class="description">Rain</p>
+
+              <p class="feels-like info">Feels Like <span>
+                  7&deg;</span></p>
+            </div>
+
+            <div class="weather-more-info">
+              <div class="group-info humidity">
+                <img class="label" src="./icons/humidity.png" alt="humidity icon">
+                <div class="info"><span>53</span>%</div>
+              </div>
+              <div class="group-info">
+                <img class="label" src="./icons/thermometer.png" alt="thermometer icon">
+                <div class="info"><span class="max-temp temp-text">7&deg;</span> / <span
+                    class="min-temp temp-text">2&deg;</span>
+                </div>
+              </div>
+              <div class="group-info">
+                <img class="label" src="./icons/wind-speed.png" alt="wind speed icon">
+                <div class="info"><span>0</span>m/s</div>
+              </div>
             </div>
           </div>
-          <div class="group-info">
-            <img class="label" src="./icons/wind-speed.png" alt="wind speed icon">
-            <div class="info"><span>0</span>m/s</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="week-days-section">
-        <div class="days-row">
-          <ul class="week-days-info">
+          <div class="week-days-section">
+            <div class="days-row">
+              <ul class="week-days-info">
 
-            <!-- <li class="week-days">
+                <!-- <li class="week-days">
               <p class="day">Monday</p>
               <div class="group-day-info">
                 <img class="label" src="./icons/clear.png">
@@ -70,14 +78,20 @@
                 </div>
               </div>
             </li> -->
-          </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="not-found">
+          <img class="error-img" src="./icons/no-result2-white.png" alt="not found result img" />
+          <p class="first-error-msg">Oops! location not found!</p>
+          <p class="second-error-msg">Please try again!</p>
+        </div>
+        <div class="welcome-page">
+          <img class="error-img" src="./icons/meteorology.png" alt="meteorology img" />
+          <p class="first-msg">Enter a City Name, Please! </p>
         </div>
       </div>
-    </div>
-    <div class="not-found">
-      <img class="error-img" src="./icons/no-result2-white.png" alt="not found result img" />
-      <p class="first-error-msg">Oops! location not found!</p>
-      <p class="second-error-msg">Please try again!</p>
     </div>
   </div>
   <script src="script.js"></script>

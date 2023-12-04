@@ -9,38 +9,91 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+:root {
+  --white: #fff;
+  --off-white: #e5e5e5;
+  --transparent-white-1: rgba(255, 255, 255, 0.25);
+  --transparent-white-2: rgba(255, 255, 255, 0.11);
+  --main-color-1: hsla(239, 100%, 67%, 1);
+  --main-color-2: hsla(206, 100%, 85%, 1);
+  --shadow: rgba(3, 46, 87, 0.2);
+
+}
+
 html {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 62.5%;
 }
 
 body {
-  /* font-family: 'Inter', sans-serif; */
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   min-height: 100vh;
-  background: slateblue;
-  color: #111;
+  background: var(--main-color-1);
+  background: linear-gradient(135deg, var(--main-color-1) 0%, var(--main-color-2) 85%);
+  background: -moz-linear-gradient(135deg, var(--main-color-1) 0%, var(--main-color-2) 85%);
+  background: -webkit-linear-gradient(135deg, var(--main-color-1) 0%, var(--main-color-2) 85%);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="var(--main-color-1)", endColorstr="var(--main-color-2)", GradientType=1);
+
 }
 
-.wrapper {
-  width: 42.6rem;
-  height: 67rem;
-  border-radius: 1.5rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.15);
-  border: 0.5px solid #ddd;
-  backdrop-filter: blur(40px);
+/* .wrapper {
+  width: 90vw;
+  max-width: 42.6rem;
+  height: 49.5rem; 
+  backdrop-filter: blur(1.5rem);
+} */
 
-  position: relative;
+.container {
+  width: 90vw;
+  max-width: 42.6rem;
+  height: 49.5rem;
+  padding: 1rem;
+  background: var(--transparent-white-2);
+  /* backdrop-filter: blur(1rem); */
+  /* backdrop-filter: blur(1.5rem);*/
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--transparent-white-2);
+  border-radius: 0.8rem;
+  box-shadow: 0 1.8rem 3.7rem var(--shadow);
+  text-align: center;
+
+  position: absolute;
+  transform: translate(-50%, -50%);
+
 }
 
+.shape {
+  position: absolute;
+  background-color: var(--transparent-white-1);
+  backdrop-filter: blur(1.2rem);
+  border: 2px solid var(--transparent-white-2);
+  border-radius: 50%;
+}
+
+.shape-1 {
+  height: 20rem;
+  width: 20rem;
+  top: 0.3rem;
+  right: -6.5rem;
+}
+
+.shape-2 {
+  height: 15rem;
+  width: 15rem;
+  left: -9rem;
+  bottom: -3.5rem;
+}
+
+.section-search {
+  padding: 0 1.4rem;
+}
 
 .search-box {
   width: 100%;
   height: 4.8rem;
-  /* background: rgb(104, 103, 103); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,21 +112,27 @@ body {
   width: 100%;
   height: 100%;
   font-size: 1.8rem;
-  /* font-family: 'Inter', sans-serif; */
   font-weight: 500;
   background: transparent;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  border-radius: 1rem;
+  border-style: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  /* border-radius: 1rem; */
+  /* outline: none; */
   color: #fff;
   text-transform: capitalize;
   padding: 0 4.8rem 0 4.2rem;
+  transition: all 0.2s;
 
   position: absolute;
 }
 
+.search-box input:focus {
+  border-bottom: 2px solid rgb(91, 96, 255, 0.6);
+}
+
 .search-box input::placeholder {
-  color: #ffffffc2;
+  color: #ffffff82;
   text-transform: capitalize;
 }
 
@@ -85,27 +144,25 @@ body {
   font-size: 2.6rem;
   color: #fff;
   background-color: transparent;
-  border: none;
-  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 25%;
+  /* outline: none; */
   cursor: pointer;
   padding: 0 4rem 0 0.5rem;
+  text-align: center;
+  justify-self: center;
+  text-justify: center;
 }
 
 .section-weather,
-.week-days-section,
+.welcome-page,
 .not-found {
   visibility: hidden;
 }
 
-.section-weather.active,
-.week-days-section.active,
-.not-found.active {
+.active {
   visibility: visible;
 }
-
-/* .not-found {
-  visibility: hidden;
-} */
 
 .section-weather {
   position: relative;
@@ -120,7 +177,7 @@ body {
 .weather-info {
   margin-bottom: 3.2rem;
   text-align: center;
-  margin: 1rem 0;
+  margin: 0.7rem 0;
 }
 
 .current-temp-info {
@@ -265,17 +322,28 @@ body {
 
 
 
-.not-found {
+.not-found,
+.welcome-page {
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 17.5rem;
+  margin-top: 10.5rem;
   align-items: center;
   justify-items: center;
   text-align: center;
   width: 100%;
 }
 
+
+
+.first-msg {
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: 500;
+  margin-top: 2.5rem;
+}
+
+.error-img,
 .error-img {
   width: 65%;
   color: #fff;
