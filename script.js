@@ -1,17 +1,18 @@
 const containerEl = document.querySelector('.container');
 const welcomePageEl = document.querySelector('.welcome-page');
 const weatherSectionEl = document.querySelector('.section-weather');
-const searchEl = document.querySelector('.search-box button');
-const searchPlaceholder = document.querySelector('.search-box input');
+const searchBtnEl = document.querySelector('.search-box button');
+const searchInputEl = document.querySelector('.search-box input');
 const currentTempInfo = document.querySelector('.current-temp-info');
 const weatherMoreInfoEl = document.querySelector('.weather-more-info');
 const weekDaysSectionEl = document.querySelector('.week-days-section');
 const weekDaysInfoEl = document.querySelector('.week-days-info');
 const error404 = document.querySelector('.not-found');
+const formEl = document.getElementById('form')
 
 const apiKey = `ea70cf29c6b6294b6dfd0074ac0a9770`;
 
-
+welcomePageEl.classList.add('active');
 
 async function getCurrentWeather(city) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
@@ -19,16 +20,17 @@ async function getCurrentWeather(city) {
   const requestCityWeather = new Request(url);
   const response = await fetch(requestCityWeather);
   const data = await response.json();
-  console.log(data);
+  // console.log(data);//test
 
-  if (data.cod == '404') {
-    containerEl.style.height = '49.5rem';
+  if (data.cod == '404' || searchInputEl.value == '') {
+    weekDaysInfoEl.innerHTML = '';
+    containerEl.style.height = '52rem';
     welcomePageEl.classList.remove('active');
     weatherSectionEl.classList.remove('active');
     error404.classList.add('active');
 
   } else {
-    containerEl.style.height = '66.4rem';
+    containerEl.style.height = '67.4rem';
     welcomePageEl.classList.remove('active');
     error404.classList.remove('active');
     weatherSectionEl.classList.add('active');
@@ -61,7 +63,7 @@ function parseCurrentWeather(data) {
     currentWeatherCondition;
   }
 
-  currentTempInfo.innerHTML = `<p class="temperature flex">${currentTemp}<span>&deg;</span></p>
+  currentTempInfo.innerHTML = `<p class="temperature flex">${currentTemp}<span>&deg;C</span></p>
                               <img class="current-weather-img" src="./icons/${currentWeatherCondition}.png">
                               <p class="description">${weatherDescription}</p>
                               <p class="feels-like info">Feels Like <span> ${feelsLike}</span>&deg;</span></p>`;
@@ -93,7 +95,7 @@ async function getWeeklyWeather(city) {
 }
 
 function parseWeeklyWeather(data) {
-  console.log(data);
+  // console.log(data);//Test
   const uniqueDayNum = [];
   let dayText = '';
   let today = new Date().getUTCDay();
@@ -150,6 +152,7 @@ function parseWeeklyWeather(data) {
       weekDaysInfoEl.innerHTML += `<li class="week-days">
       <p class="day">${dayText}</p>
       <div class="group-day-info">
+        <p class="week-day-description ">${currentWeatherCondition}</p>
         <img class="label" src="./icons/${currentWeatherCondition}.png"/>
         <div class="week-info"><span class="max-temp temp-text">${tempMax}&deg; </span> / <span class="min-temp temp-text">${tempMin}&deg; </span>
         </div>
@@ -157,22 +160,25 @@ function parseWeeklyWeather(data) {
     </li>`
     }
   })
-
 }
+
 
 async function checkWeather() {
   const city = document.querySelector('.search-box input').value;
+
   let currentWeather = await getCurrentWeather(city);
   let weeklyWeather = await getWeeklyWeather(city);
 
   parseCurrentWeather(currentWeather);
   parseWeeklyWeather(weeklyWeather);
-
 }
 
-searchEl.addEventListener('click', () => {
-  checkWeather();
+searchBtnEl.addEventListener('click', checkWeather);
+
+searchInputEl.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    checkWeather()
+  }
 })
 
 
-welcomePageEl.classList.add('active')

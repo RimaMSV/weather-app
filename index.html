@@ -23,15 +23,15 @@
 
 <body>
   <div class="wrapper">
-    <div class="container">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
 
+    <div class="container">
       <div class="section-search">
         <div class="search-box">
           <i class='bx bxs-map'></i>
           <input type="text" placeholder="Enter your location">
-          <button class="bx bx-search"></button>
+          <button type="submit"><i class='bx bx-search'></i></button>
         </div>
       </div>
       <div class="section-main">
@@ -41,60 +41,62 @@
 
             <div class="current-temp-info">
               <p class="temperature flex"><span>&deg;</span></p>
-              <img class="current-weather-img" src="./icons/drizzle.png">
-              <p class="description">Rain</p>
+              <!-- <img class="current-weather-img" src="./icons/drizzle.png"> -->
+              <!-- <p class="description"></p>
 
-              <p class="feels-like info">Feels Like <span>
-                  7&deg;</span></p>
+              <p class="feels-like info"><span>
+                  &deg;</span></p> -->
             </div>
 
             <div class="weather-more-info">
-              <div class="group-info humidity">
+              <!-- <div class="group-info humidity">
                 <img class="label" src="./icons/humidity.png" alt="humidity icon">
-                <div class="info"><span>53</span>%</div>
+                <div class="info"><span></span></div>
               </div>
               <div class="group-info">
                 <img class="label" src="./icons/thermometer.png" alt="thermometer icon">
-                <div class="info"><span class="max-temp temp-text">7&deg;</span> / <span
-                    class="min-temp temp-text">2&deg;</span>
-                </div>
-              </div>
-              <div class="group-info">
-                <img class="label" src="./icons/wind-speed.png" alt="wind speed icon">
-                <div class="info"><span>0</span>m/s</div>
-              </div>
+                <div class="info"><span class="max-temp temp-text">&deg;</span> / <span
+                    class="min-temp temp-text">&deg;</span>
+                </div> -->
+            </div>
+            <div class="group-info">
+              <!-- <img class="label" src="./icons/wind-speed.png" alt="wind speed icon">
+                <div class="info"><span></span></div> -->
             </div>
           </div>
+        </div>
 
-          <div class="week-days-section">
-            <div class="days-row">
-              <ul class="week-days-info">
+        <div class="week-days-section">
+          <div class="days-row">
+            <ul class="week-days-info">
 
-                <!-- <li class="week-days">
+              <!-- <li class="week-days">
               <p class="day">Monday</p>
               <div class="group-day-info">
+                <p class="week-day-description"></p>
                 <img class="label" src="./icons/clear.png">
                 <div class="week-info"><span class="max-temp">8&deg; </span> / <span class="min-temp">0&deg; </span>
                 </div>
               </div>
             </li> -->
-              </ul>
-            </div>
+            </ul>
           </div>
         </div>
-        <div class="not-found">
-          <img class="error-img" src="./icons/no-result2-white.png" alt="not found result img" />
-          <p class="first-error-msg">Oops! location not found!</p>
-          <p class="second-error-msg">Please try again!</p>
-        </div>
-        <div class="welcome-page">
-          <img class="error-img" src="./icons/meteorology.png" alt="meteorology img" />
-          <p class="first-msg">Enter a City Name, Please! </p>
-        </div>
+      </div>
+      <div class="not-found">
+        <img class="error-img" src="./icons/not found 2.png" alt="not found result img" />
+        <p class="first-error-msg">Oops! location not found!</p>
+        <p class="second-error-msg">Please try again!</p>
+      </div>
+      <div class="welcome-page">
+        <img class="error-img" src="./icons/meteorology.png" alt="meteorology img" />
+        <p class="first-msg">Enter a City Name, Please! </p>
       </div>
     </div>
   </div>
-  <script src="script.js"></script>
+
+</body>
+<script src="script.js"></script>
 </body>
 
 </html>
