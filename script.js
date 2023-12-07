@@ -8,7 +8,7 @@ const weatherMoreInfoEl = document.querySelector('.weather-more-info');
 const weekDaysSectionEl = document.querySelector('.week-days-section');
 const weekDaysInfoEl = document.querySelector('.week-days-info');
 const error404 = document.querySelector('.not-found');
-const formEl = document.getElementById('form')
+const formEl = document.getElementById('form');
 
 const apiKey = `ea70cf29c6b6294b6dfd0074ac0a9770`;
 
@@ -28,7 +28,6 @@ async function getCurrentWeather(city) {
     welcomePageEl.classList.remove('active');
     weatherSectionEl.classList.remove('active');
     error404.classList.add('active');
-
   } else {
     containerEl.style.height = '67.4rem';
     welcomePageEl.classList.remove('active');
@@ -51,14 +50,27 @@ function parseCurrentWeather(data) {
   let tempMin = Math.round(data.main.temp_min);
   let windSpeed = Math.round(data.wind.speed);
 
-  const fog = ['mist', 'smoke', 'dust', 'fog', 'haze', 'sand', 'ash', 'squall', 'tornado']
+  const fog = [
+    'mist',
+    'smoke',
+    'dust',
+    'fog',
+    'haze',
+    'sand',
+    'ash',
+    'squall',
+    'tornado',
+  ];
 
   if (fog.includes(currentWeatherCondition)) {
     currentWeatherCondition = 'haze';
   }
 
-  if (currentWeatherCondition === 'Clear' && currentweatherConditionCode.includes('n')) {
-    currentWeatherCondition = currentWeatherCondition + '-n'
+  if (
+    currentWeatherCondition === 'Clear' &&
+    currentweatherConditionCode.includes('n')
+  ) {
+    currentWeatherCondition = currentWeatherCondition + '-n';
   } else {
     currentWeatherCondition;
   }
@@ -66,7 +78,7 @@ function parseCurrentWeather(data) {
   currentTempInfo.innerHTML = `<p class="temperature flex">${currentTemp}<span>&deg;C</span></p>
                               <img class="current-weather-img" src="./icons/${currentWeatherCondition}.png">
                               <p class="description">${weatherDescription}</p>
-                              <p class="feels-like info">Feels Like <span> ${feelsLike}</span>&deg;</span></p>`;
+                              <p class="feels-like info">Feels Like<span>  ${feelsLike}</span>&deg;</span></p>`;
 
   weatherMoreInfoEl.innerHTML = `<div class="group-info humidity">
                                   <img class="label" src="./icons/humidity.png" alt="humidity icon">
@@ -81,7 +93,7 @@ function parseCurrentWeather(data) {
                                   <img class="label" src="./icons/wind-speed.png" alt="wind speed icon">
                                   <div class="info"><span>${windSpeed}</span>m/s</div>
                                 </div>
-                                </div>`
+                                </div>`;
 }
 
 async function getWeeklyWeather(city) {
@@ -107,7 +119,7 @@ function parseWeeklyWeather(data) {
 
       switch (dayNum) {
         case 0:
-          dayText = "Sunday";
+          dayText = 'Sunday';
           break;
         case 1:
           dayText = 'Monday';
@@ -134,17 +146,30 @@ function parseWeeklyWeather(data) {
       let tempMax = Math.round(item.main.temp_max);
       let tempMin = Math.round(item.main.temp_min);
       let currentWeatherCondition = item.weather[0].main;
+      currentWeatherCondition = currentWeatherCondition.toLowerCase();
       let currentweatherConditionCode = item.weather[0].icon;
 
-      const fog = ['mist', 'smoke', 'dust', 'fog', 'haze', 'sand', 'ash', 'squall', 'tornado']
+      const fog = [
+        'mist',
+        'smoke',
+        'dust',
+        'fog',
+        'haze',
+        'sand',
+        'ash',
+        'squall',
+        'tornado',
+      ];
 
       if (fog.includes(currentWeatherCondition)) {
         currentWeatherCondition = 'haze';
       }
 
-      if (currentWeatherCondition === 'Clear' && currentweatherConditionCode.includes('n')) {
-
-        currentWeatherCondition = currentWeatherCondition + '-n'
+      if (
+        currentWeatherCondition === 'Clear' &&
+        currentweatherConditionCode.includes('n')
+      ) {
+        currentWeatherCondition = currentWeatherCondition + '-n';
       } else {
         currentWeatherCondition;
       }
@@ -157,11 +182,10 @@ function parseWeeklyWeather(data) {
         <div class="week-info"><span class="max-temp temp-text">${tempMax}&deg; </span> / <span class="min-temp temp-text">${tempMin}&deg; </span>
         </div>
       </div>
-    </li>`
+    </li>`;
     }
-  })
+  });
 }
-
 
 async function checkWeather() {
   const city = document.querySelector('.search-box input').value;
@@ -177,8 +201,6 @@ searchBtnEl.addEventListener('click', checkWeather);
 
 searchInputEl.addEventListener('keyup', (event) => {
   if (event.key === 'Enter') {
-    checkWeather()
+    checkWeather();
   }
-})
-
-
+});
